@@ -2,7 +2,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ApplicationConfig } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideFileRouter } from '@analogjs/router';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, withComponentInputBinding } from '@angular/router';
 import {
   IonicRouteStrategy,
   provideIonicAngular,
@@ -10,7 +10,7 @@ import {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideFileRouter(),
+    provideFileRouter(withComponentInputBinding()),
     provideHttpClient(withFetch()),
     provideClientHydration(),
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
